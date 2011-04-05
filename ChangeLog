@@ -1,3 +1,25 @@
+2011-04-05  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Version 0.1.1
+
+2011-04-04  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/doc/Makefile: Do not call clean in all target
+
+2011-02-28  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/doc/Makefile: Call R and Rscript relative to R_HOME/bin
+
+2011-02-11  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/doc/RcppGSL/Makefile: Also create unitTest vignette
+	* inst/doc/RcppGSL/RcppGSL-unitTests.Rnw: idem
+	* inst/doc/RcppGSL/unitTests/RcppGSL-unitTests.R: idem
+
+2010-12-06  Romain Francois <romain@r-enthusiasts.com>
+
+	* inst/doc/RcppGSL/RcppGSL.Rnw: cosmetics
+
 2010-11-30  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION: Version 0.1.0 and initial release

@@ -1,3 +1,11 @@
+0.1.1   2011-04-05
+
+    o   Unit tests produce a summary vignette as for some of the other packages
+
+    o   The documentation Makefile now uses the $R_HOME environment variable
+
+    o   The documentation Makefile no longer calls clean in the all target
+
 0.1.0   2010-11-30
 
     o   Initial CRAN release with basic functionality for vectors and matrices

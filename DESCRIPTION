@@ -1,8 +1,8 @@
 Package: RcppGSL
 Type: Package
 Title: Rcpp integration for GNU GSL vectors and matrices
-Version: 0.1.0
-Date: $Date: 2010-11-30 21:54:56 -0600 (Tue, 30 Nov 2010) $
+Version: 0.1.1
+Date: $Date: 2011-04-05 21:44:03 -0500 (Tue, 05 Apr 2011) $
 Author: Romain Francois and Dirk Eddelbuettel
 Maintainer: Dirk Eddelbuettel and Romain Francois
         <RomainAndDirk@r-enthusiasts.com>
@@ -29,6 +29,6 @@ Depends: Rcpp (>= 0.8.9)
 Suggests: RUnit, inline
 LinkingTo: Rcpp
 SystemRequirements: GNU GSL
-Packaged: 2010-12-01 03:59:02.063655 UTC; edd
+Packaged: 2011-04-06 02:45:28.52547 UTC; edd
 Repository: CRAN
-Date/Publication: 2010-12-01 14:29:54
+Date/Publication: 2011-04-06 06:08:49
