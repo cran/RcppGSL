@@ -1,6 +1,7 @@
+
 ## fastLm.R: Rcpp/GSL implementation of lm()
 ##
-## Copyright (C)  2010 Dirk Eddelbuettel and Romain Francois
+## Copyright (C)  2010 - 2012  Dirk Eddelbuettel and Romain Francois
 ##
 ## This file is part of RcppGSL.
 ##
@@ -17,27 +18,27 @@
 ## You should have received a copy of the GNU General Public License
 ## along with RcppGSL.  If not, see <http://www.gnu.org/licenses/>.
 
-fastLmPure <- function(y, X) {
+fastLmPure <- function(X, y) {
 
-    stopifnot(is.matrix(X))
-    stopifnot(nrow(y)==nrow(X))
+    stopifnot(is.matrix(X), is.numeric(y), nrow(y)==nrow(X))
 
-    res <- .Call("fastLm", y, X, package="RcppGSL")
+    res <- .Call("fastLm", X, y, package="RcppGSL")
 }
 
-fastLm <- function(x, ...) UseMethod("fastLm")
+fastLm <- function(X, ...) UseMethod("fastLm")
 
-fastLm.default <- function(x, y, ...) {
+fastLm.default <- function(X, y, ...) {
 
-    x <- as.matrix(x)
+    X <- as.matrix(X)
     y <- as.numeric(y)
 
-    res <- fastLmPure(y, x)
-    names(res$coefficients) <- colnames(x)
+    res <- fastLmPure(X, y)
+    names(res$coefficients) <- colnames(X)
 
-    res$fitted.values <- as.vector(x %*% res$coefficients)
+    res$fitted.values <- as.vector(X %*% res$coefficients)
     res$residuals <- y - res$fitted.values
     res$call <- match.call()
+    res$intercept <- any(apply(X, 2, function(x) all(x == x[1])))
 
     class(res) <- "fastLm"
     res
@@ -66,11 +67,13 @@ summary.fastLm <- function(object, ...) {
     ## cf src/stats/R/lm.R and case with no weights and an intercept
     f <- object$fitted.values
     r <- object$residuals
-    mss <- sum((f - mean(f))^2)
+    #mss <- sum((f - mean(f))^2)
+    mss <- if (object$intercept) sum((f - mean(f))^2) else sum(f^2)
     rss <- sum(r^2)
 
     r.squared <- mss/(mss + rss)
-    df.int <- 1 		# case of intercept
+    df.int <- if (object$intercept) 1L else 0L
+
     n <- length(f)
     rdf <- object$df
     adj.r.squared <- 1 - (1 - r.squared) * ((n - df.int)/rdf)
@@ -78,7 +81,10 @@ summary.fastLm <- function(object, ...) {
     res <- list(call=object$call,
                 coefficients=TAB,
                 r.squared=r.squared,
-                adj.r.squared=adj.r.squared)
+                adj.r.squared=adj.r.squared,
+                sigma=sqrt(sum((object$residuals)^2)/rdf),
+                df=object$df,
+                residSum=summary(object$residuals, digits=5)[-4])
 
     class(res) <- "summary.fastLm"
     res
@@ -87,19 +93,29 @@ summary.fastLm <- function(object, ...) {
 print.summary.fastLm <- function(x, ...) {
     cat("\nCall:\n")
     print(x$call)
+    cat("\nResiduals:\n")
+    print(x$residSum)
     cat("\n")
 
-    printCoefmat(x$coefficients, P.value=TRUE, has.Pvalue=TRUE)
+    printCoefmat(x$coefficients, P.values=TRUE, has.Pvalue=TRUE)
+    digits <- max(3, getOption("digits") - 3)
+    cat("\nResidual standard error: ", formatC(x$sigma, digits=digits), " on ",
+        formatC(x$df), " degrees of freedom\n", sep="")
+    cat("Multiple R-squared: ", formatC(x$r.squared, digits=digits),
+        ",\tAdjusted R-squared: ",formatC(x$adj.r.squared, digits=digits),
+        "\n", sep="")
+    invisible(x)
 }
 
 fastLm.formula <- function(formula, data=list(), ...) {
     mf <- model.frame(formula=formula, data=data)
-    x <- model.matrix(attr(mf, "terms"), data=mf)
+    X <- model.matrix(attr(mf, "terms"), data=mf)
     y <- model.response(mf)
 
-    res <- fastLm.default(x, y, ...)
+    res <- fastLm.default(X, y, ...)
     res$call <- match.call()
     res$formula <- formula
+    res$intercept <- attr(attr(mf, "terms"), "intercept")
     res
 }
 

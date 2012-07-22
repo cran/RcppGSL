@@ -3,10 +3,6 @@
 \alias{fastLmPure}
 \alias{fastLm.default}
 \alias{fastLm.formula}
-\alias{print.fastLm}
-\alias{summary.fastLm}
-\alias{print.summary.fastLm}
-\alias{predict.fastLm}
 \concept{regression}
 \title{Bare-bones linear model fitting function}
 \description{
@@ -14,24 +10,17 @@
   function of the \code{GNU GSL} library.
 }
 \usage{
-fastLmPure(y, X)
+fastLmPure(X, y)
 
-fastLm(x, ...)
-\method{fastLm}{default}(x, y, ...)
-\method{fastLm}{formula}(formula, data = list(), ...)
-\method{print}{fastLm}(x, ...)
-\method{summary}{fastLm}(object, ...)
-\method{predict}{fastLm}(object, newdata=NULL, ...)
+fastLm(X, \dots)
+\method{fastLm}{default}(X, y, \dots)
+\method{fastLm}{formula}(formula, data = list(), \dots)
 }
 \arguments{
   \item{y}{a vector containing the explained variable.}
-  \item{X}{a data.frame or matrix containing the explanatory variables.}
-  \item{x}{a numeric design matrix for the model.}
+  \item{X}{a model matrix.}
   \item{formula}{a symbolic description of the model to be fit.}
   \item{data}{an optional data frame containing the variables in the model.}
-  \item{newdata}{an optional data frame containing the variables for
-    which a model prediction is desired.}
-  \item{object}{an object of class \code{"fastLm"}, i.e. a fitted model}
   \item{\ldots}{not used}
 }
 \details{
@@ -79,11 +68,10 @@ fastLm(x, ...)
   Gerard Jungman.  RcppGSL is written by Romain Francois and Dirk Eddelbuettel.
 }
 \examples{
-  require(datasets)
-  data(trees)
+  data(trees, package="datasets")
 
   ## bare-bones direct interface
-  flm <- fastLmPure( log(trees$Volume),  cbind(1, log(trees$Girth)) )
+  flm <- fastLmPure( cbind(1, log(trees$Girth)), log(trees$Volume) )
   print(flm)
 
   ## standard R interface for formula or data returning object of class fastLm

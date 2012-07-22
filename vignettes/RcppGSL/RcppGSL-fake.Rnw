@@ -6,7 +6,6 @@
 \setlength{\oddsidemargin}{0pt}
 \setlength{\textwidth}{17cm} % uh-oh, I use letter :)
 
-\usepackage{Sweave}
 \begin{document}
 \end{document}
 

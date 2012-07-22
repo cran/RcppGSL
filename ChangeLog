@@ -1,3 +1,60 @@
+2012-07-22  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Version 0.2.0
+
+	* inst/unitTests/runit.fastLm.R: expanded unit tests
+
+	* R/inline.R: Use two hidden global variables to store RcppGSL
+	compiler and linker flags instead of using assignInNamespace
+
+	* vignettes/RcppGSL/RcppGSL-intro.Rnw: Skip use of highlight for
+	C++ and shell snippets to sidestep build issues on 32bit OSs
+
+	* vignettes/RcppGSL.bib: updated references
+
+2012-07-21  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/fastLm.R: expanded summary() display as in RcppArmadillo
+
+	* inst/NEWS.Rd: converted from ascii text to Rd format
+
+	* vignettes/*: moved from inst/doc/* per newer R Policy
+
+	* vignettes/: renamed main vignette to RcppGSL-intro to not clash
+	with the filename of the package reference manual RcppGSL.pdf
+
+	* DESCRIPTION: changed Maintainer: to single person per CRAN Policy
+
+2011-12-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/unitTests/runTests.R: unit tests output 'fallback' directory
+	changed to '..' and files are now in top-level of $pkg.Rcheck/
+
+2011-12-22  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/RcppGSLForward.h (RcppGSL): Commented-out long and
+	ulong declarations which currently clash with int64
+
+	* inst/include/RcppGSL_matrix.h (RcppGSL): Commented-out long and
+	ulong casts which currently clash with int64
+
+	* inst/unitTests/runit.gsl.R: Disable corresponding tests
+
+2011-06-14  Douglas Bates <bates@stat.wisc.edu>
+
+	* R/fastLm.R, man/fastLm.Rd, src/fastLm.cpp,
+	inst/unitTests/runit.fastLm.R: Change order of arguments in
+	fastLm.cpp, fastLm.R, unit test and documentation.
+
+2011-06-13  Dirk Eddelbuettel  <edd@debian.org>
+
+	* NAMESPACE: Properly export S3methods as such
+	* man/fastLm.Rd: Similar updates to help page
+
+2011-04-08  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/fastLm.R: In print.summary.fastLm(), use 'P.values' not 'P.value'
+
 2011-04-05  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION: Version 0.1.1
