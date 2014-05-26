@@ -1,8 +1,12 @@
 useDynLib(RcppGSL)
 
+importFrom(Rcpp, evalCpp)
 importFrom(utils,assignInNamespace)
+
 export(fastLmPure,
-       fastLm)
+       fastLm,
+       LdFlags,
+       CFlags)
 S3method(fastLm, default)
 S3method(fastLm, formula)
 S3method(predict, fastLm)

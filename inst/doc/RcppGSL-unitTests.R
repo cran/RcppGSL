@@ -1,32 +1,17 @@
-\documentclass[10pt]{article}
-%\VignetteIndexEntry{RcppGSL-unitTests}
-%\VignetteKeywords{R,GSL,Rcpp,unit tests}
-%\VignettePackage{RcppGSL}
+### R code from vignette source 'RcppGSL-unitTests.Rnw'
 
-\usepackage{vmargin}
-\setmargrb{0.75in}{0.75in}{0.75in}{0.75in}
-
-\RequirePackage{ae,mathpple}    % ae as a default font pkg works with Sweave
-\RequirePackage[T1]{fontenc}
-
-<<echo=FALSE,print=FALSE>>=
+###################################################
+### code chunk number 1: RcppGSL-unitTests.Rnw:12-16
+###################################################
 require(RcppGSL)
 prettyVersion <- packageDescription("RcppGSL")$Version
 prettyDate <- format(Sys.Date(), "%B %e, %Y")
 library(RUnit)
-@
 
-\usepackage[colorlinks]{hyperref}
-\author{Dirk Eddelbuettel \and Romain Fran\c{c}ois}
-\title{\texttt{RcppGSL}: Unit testing results}
-\date{\texttt{RcppGSL} version \Sexpr{prettyVersion} as of \Sexpr{prettyDate}}
 
-\begin{document}
-\maketitle
-
-\section*{Test Execution}
-
-<<unitTesting,echo=FALSE,print=FALSE>>=
+###################################################
+### code chunk number 2: unitTesting
+###################################################
 pkg <- "RcppGSL"
 if (file.exists("unitTests-results")) unlink("unitTests-results", recursive = TRUE)
 dir.create("unitTests-results")
@@ -45,19 +30,16 @@ if (file.exists("/tmp")) {
         file.copy(fname, "/tmp", overwrite=TRUE)
     }))
 }
-@
 
-\section*{Test Results}
 
-\begin{verbatim}
-<<importResults,echo=FALSE,results=tex>>=
+###################################################
+### code chunk number 3: importResults
+###################################################
 results <- "unitTests-results/RcppGSL-unitTests.txt"
 if (file.exists(results)) {
     writeLines(readLines(results))
 } else{
     writeLines( "unit test results not available" )
 }
-@
-\end{verbatim}
 
-\end{document}
+
