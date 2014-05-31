@@ -1,5 +1,5 @@
-b8012d9c01fe7cd58ccf74a3174ebdad *ChangeLog
-c89094af59505f912702ba6ef5f83edf *DESCRIPTION
+c2d5efb96b3080875d969e416044149e *ChangeLog
+4eccf93153fc6792b9a8587ad9d8a387 *DESCRIPTION
 5006b0d58b66a91f0ae3d9cc30a93f03 *NAMESPACE
 c7300e3eebf19a2d25780d4e1c46736a *R/fastLm.R
 c713b28c3fa82cd49553a6164df3395f *R/inline.R
@@ -10,13 +10,13 @@ e0082ca98af22ba617fc6ef97a01ce0c *build/vignette.rds
 662348cc9b46eddb09c1f84de0b04603 *cleanup
 a26e3662fd047b1666b433dacd78317b *configure
 a08abc9662c3be35b4d3b97a11aa3b34 *configure.ac
-62bb1d7d0a6bc6c8de875721f6914d77 *inst/NEWS.Rd
+db38994afaa845643d8f658c5badd3ca *inst/NEWS.Rd
 6dd643214e856ecc5fced2f10034d806 *inst/doc/RcppGSL-intro.R
 e95563ec553c3287012384402620b2bb *inst/doc/RcppGSL-intro.Rnw
-cd695e58a7ddde4dbae1444de3b0ee4c *inst/doc/RcppGSL-intro.pdf
+d5d526bacc5567a26617ea58e3a2f97d *inst/doc/RcppGSL-intro.pdf
 d740536059183371536d8c845b365916 *inst/doc/RcppGSL-unitTests.R
 e3b8cf6ac0aaebce65a58f9ca990848b *inst/doc/RcppGSL-unitTests.Rnw
-da39c58b31617ad2d436c54d69f5b577 *inst/doc/RcppGSL-unitTests.pdf
+b22c37ca78abbfbefe4504f3bbd3f2f0 *inst/doc/RcppGSL-unitTests.pdf
 39f7d3f6f1f9dad32d955cf5dca5350d *inst/examples/RcppGSLExample/DESCRIPTION
 ca4d3febd8107be64527dbb80674d7f0 *inst/examples/RcppGSLExample/NAMESPACE
 9415f771326e6cb5c137b863fe5eb901 *inst/examples/RcppGSLExample/R/colNorm.R
@@ -30,7 +30,7 @@ a7743944785d32a197a2cd426d4f518d *inst/examples/RcppGSLExample/src/colNorm.cpp
 fc745923b1f886c4bd8da0398fd459e9 *inst/examples/bSpline/bSpline.cpp
 70e3dd062336511f98026dca8706dda3 *inst/examples/bSpline/plotHelper.R
 ba98e9bd9e787a2af70cda707e2ea0a9 *inst/include/RcppGSL.h
-544c23d54a8acc3119790ed5bd0a35d4 *inst/include/RcppGSLForward.h
+f20636c6ac0ca80a00b446875165e71f *inst/include/RcppGSLForward.h
 c43c1fd0ae7ac788cab0f21e367b877f *inst/include/RcppGSL_matrix.h
 7affd0b9d941ba2f8ac9aa9346dce1af *inst/include/RcppGSL_matrix_view.h
 b3c7c81803e83d6ac34ba6e253a8c60c *inst/include/RcppGSL_vector.h
