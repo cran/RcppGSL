@@ -63,7 +63,7 @@ data <- list( x = seq(0,1,length=10), y = 1:10 )
 
 
 ###################################################
-### code chunk number 21: RcppGSL-intro.Rnw:693-697
+### code chunk number 21: RcppGSL-intro.Rnw:690-694
 ###################################################
 colNorm <- function(M) {
     stopifnot(is.matrix(M))
@@ -72,7 +72,7 @@ colNorm <- function(M) {
 
 
 ###################################################
-### code chunk number 22: RcppGSL-intro.Rnw:715-742
+### code chunk number 22: RcppGSL-intro.Rnw:712-739
 ###################################################
 require(inline)
 
@@ -104,13 +104,13 @@ foo(M)
 
 
 ###################################################
-### code chunk number 23: RcppGSL-intro.Rnw:748-749 (eval = FALSE)
+### code chunk number 23: RcppGSL-intro.Rnw:745-746 (eval = FALSE)
 ###################################################
 ## package.skeleton( "mypackage", foo )
 
 
 ###################################################
-### code chunk number 25: RcppGSL-intro.Rnw:802-803 (eval = FALSE)
+### code chunk number 25: RcppGSL-intro.Rnw:799-800 (eval = FALSE)
 ###################################################
 ## sourceCpp("gslNorm.cpp")
 
