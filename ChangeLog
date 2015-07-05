@@ -1,3 +1,43 @@
+2015-07-06  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Release 0.2.5
+
+	* NAMESPACE: Added now-required importFrom() statements
+
+	* DESCRIPTION: Added Imports: stats
+
+2015-07-04  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/RcppGSL-intro.Rnw (Rcpp): Updated and edited throughout.
+
+2015-06-27  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Description, Date): More Title Case; rolled Date
+
+2015-06-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/RcppGSLExample/DESCRIPTION: Updated Date and Version
+	* inst/examples/RcppGSLExample/src/colNorm.cpp: Added new version
+	based on Attributes
+	* inst/examples/RcppGSLExample/src/RcppExports.cpp: Added
+	* inst/examples/RcppGSLExample/R/RcppExports.R: Added
+	* inst/examples/RcppGSLExample/R/colNorm.R: Retired
+
+	* inst/unitTests/runit.client.package.R (test.client.package):
+	Updated to use version 0.0.3 of RcppGSLExample
+
+	* vignettes/RcppGSL-intro.Rnw (Rcpp): Updated to reflect updated
+	example client package RcppGSLExample
+
+	* src/RcppExports.cpp: Updated via newer compileAttributes()
+
+	* .travis.yml (install): Use Launchpad PPA for r-cran-* packages
+
+2015-06-24  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/examples/bSpline/bSpline.cpp (fitData): Removed unneccessary
+	instantiation of a data.frame object
+
 2015-01-24  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION: Version 0.2.4

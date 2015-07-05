@@ -13,66 +13,44 @@ prettyDate <- format(Sys.Date(), "%B %e, %Y")
 ###################################################
 ### code chunk number 7: inlineex1
 ###################################################
-fx <- cxxfunction(
-    list( sum_gsl_vector_int = signature( vec_ = "integer" ) ),
-    c( sum_gsl_vector_int = '
-  RcppGSL::vector<int> vec = as< RcppGSL::vector<int> >(vec_) ;
-  int res = std::accumulate( vec.begin(), vec.end(), 0 ) ;
-  vec.free() ;  // we need to free vec after use
-  return wrap( res ) ;
-' ), plugin = "RcppGSL" )
+fx <- Rcpp::cppFunction("int sum_gsl_vector_int(RcppGSL::vector<int> vec) {
+    int res = std::accumulate( vec.begin(), vec.end(), 0) ;
+    vec.free();  // we need to free vec after use
+    return res;
+}", depends="RcppGSL")
 
 
 ###################################################
 ### code chunk number 8: callinlineex1
 ###################################################
-.Call( "sum_gsl_vector_int", 1:10 )
+sum_gsl_vector_int(1:10)
 
 
 ###################################################
 ### code chunk number 10: inlinexex2
 ###################################################
-fx2 <- cxxfunction( list( gsl_vector_sum_2 = signature( data_ = "list" ) ),
-c( gsl_vector_sum_2 = '
-    List data(data_) ;
-
-  // grab "x" as a gsl_vector through the RcppGSL::vector<double> class
-  RcppGSL::vector<double> x = data["x"] ;
-
-  // grab "y" as a gsl_vector through the RcppGSL::vector<int> class
-  RcppGSL::vector<int> y = data["y"] ;
-  double res = 0.0 ;
-  for( size_t i=0; i< x->size; i++){
-    res += x[i] * y[i] ;
-  }
-
-  // as usual with GSL, we need to explicitely free the memory
-  x.free() ;
-  y.free() ;
-
-  // return the result
-  return wrap(res);
-' ), plugin = "RcppGSL" )
+Rcpp::cppFunction("double gsl_vector_sum_2(Rcpp::List data) {
+    RcppGSL::vector<double> x = data[\"x\"];
+    RcppGSL::vector<int> y = data[\"y\"];
+    double res = 0.0 ;
+    for (size_t i=0; i< x->size; i++) {
+        res += x[i] * y[i] ;
+    }
+    x.free() ;
+    y.free() ;
+    return res ;
+}", depends= "RcppGSL")
 
 
 ###################################################
 ### code chunk number 11: callinlineex2
 ###################################################
 data <- list( x = seq(0,1,length=10), y = 1:10 )
-.Call( "gsl_vector_sum_2", data )
+gsl_vector_sum_2(data)
 
 
 ###################################################
-### code chunk number 22: RcppGSL-intro.Rnw:722-726
-###################################################
-colNorm <- function(M) {
-    stopifnot(is.matrix(M))
-    res <- .Call("colNorm", M, package="RcppGSLExample")
-}
-
-
-###################################################
-### code chunk number 23: RcppGSL-intro.Rnw:744-771
+### code chunk number 23: RcppGSL-intro.Rnw:730-757
 ###################################################
 require(inline)
 
@@ -104,13 +82,13 @@ foo(M)
 
 
 ###################################################
-### code chunk number 24: RcppGSL-intro.Rnw:777-778 (eval = FALSE)
+### code chunk number 24: RcppGSL-intro.Rnw:763-764 (eval = FALSE)
 ###################################################
-## package.skeleton( "mypackage", foo )
+## package.skeleton("mypackage", foo)
 
 
 ###################################################
-### code chunk number 26: RcppGSL-intro.Rnw:831-832 (eval = FALSE)
+### code chunk number 26: RcppGSL-intro.Rnw:821-822 (eval = FALSE)
 ###################################################
 ## sourceCpp("gslNorm.cpp")
 

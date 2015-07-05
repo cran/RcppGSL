@@ -6,31 +6,35 @@
 
 using namespace Rcpp;
 
+// fastLm
+Rcpp::List fastLm(Rcpp::NumericMatrix Xs, Rcpp::NumericVector ys);
+RcppExport SEXP RcppGSL_fastLm(SEXP XsSEXP, SEXP ysSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type Xs(XsSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type ys(ysSEXP);
+    __result = Rcpp::wrap(fastLm(Xs, ys));
+    return __result;
+END_RCPP
+}
 // gslSetErrorHandlerOff
 bool gslSetErrorHandlerOff();
 RcppExport SEXP RcppGSL_gslSetErrorHandlerOff() {
 BEGIN_RCPP
-    SEXP __sexp_result;
-    {
-        Rcpp::RNGScope __rngScope;
-        bool __result = gslSetErrorHandlerOff();
-        PROTECT(__sexp_result = Rcpp::wrap(__result));
-    }
-    UNPROTECT(1);
-    return __sexp_result;
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    __result = Rcpp::wrap(gslSetErrorHandlerOff());
+    return __result;
 END_RCPP
 }
 // gslResetErrorHandler
 bool gslResetErrorHandler();
 RcppExport SEXP RcppGSL_gslResetErrorHandler() {
 BEGIN_RCPP
-    SEXP __sexp_result;
-    {
-        Rcpp::RNGScope __rngScope;
-        bool __result = gslResetErrorHandler();
-        PROTECT(__sexp_result = Rcpp::wrap(__result));
-    }
-    UNPROTECT(1);
-    return __sexp_result;
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    __result = Rcpp::wrap(gslResetErrorHandler());
+    return __result;
 END_RCPP
 }
