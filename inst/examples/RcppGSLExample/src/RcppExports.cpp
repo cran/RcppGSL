@@ -6,14 +6,36 @@
 
 using namespace Rcpp;
 
-// colNorm
-Rcpp::NumericVector colNorm(Rcpp::NumericMatrix M);
-RcppExport SEXP RcppGSLExample_colNorm(SEXP MSEXP) {
+// colNorm_old2
+Rcpp::NumericVector colNorm_old2(Rcpp::NumericMatrix M);
+RcppExport SEXP RcppGSLExample_colNorm_old2(SEXP MSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
     Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type M(MSEXP);
-    __result = Rcpp::wrap(colNorm(M));
+    __result = Rcpp::wrap(colNorm_old2(M));
+    return __result;
+END_RCPP
+}
+// colNorm_old3
+Rcpp::NumericVector colNorm_old3(RcppGSL::matrix<double> G);
+RcppExport SEXP RcppGSLExample_colNorm_old3(SEXP GSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< RcppGSL::matrix<double> >::type G(GSEXP);
+    __result = Rcpp::wrap(colNorm_old3(G));
+    return __result;
+END_RCPP
+}
+// colNorm
+Rcpp::NumericVector colNorm(const RcppGSL::Matrix& G);
+RcppExport SEXP RcppGSLExample_colNorm(SEXP GSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< const RcppGSL::Matrix& >::type G(GSEXP);
+    __result = Rcpp::wrap(colNorm(G));
     return __result;
 END_RCPP
 }

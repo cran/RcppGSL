@@ -1,4 +1,4 @@
-// -*- mode: C++; c-indent-level: 4; c-basic-offset: 4; tab-width: 4 -*-
+// -*- mode: C++; c-indent-level: 4; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 //
 // fastLm.cpp: Rcpp and GSL based implementation of lm
 //
@@ -25,39 +25,27 @@
 #include <cmath>
 
 // [[Rcpp::export]]
-Rcpp::List fastLm(Rcpp::NumericMatrix Xs, Rcpp::NumericVector ys) {
+Rcpp::List fastLm(const RcppGSL::Matrix &X, const RcppGSL::Vector &y) {
 
-    RcppGSL::vector<double> y = Rcpp::wrap(ys);		// create gsl data structures 
-	RcppGSL::matrix<double> X = Rcpp::wrap(Xs); 
-	
-	int n = X.nrow(), k = X.ncol();
-	double chisq;
+    int n = X.nrow(), k = X.ncol();
+    double chisq;
 
-	RcppGSL::vector<double> coef(k); 	// to hold the coefficient vector 
-	RcppGSL::matrix<double> cov(k,k);	// and the covariance matrix
+    RcppGSL::Vector coef(k);                // to hold the coefficient vector 
+    RcppGSL::Matrix cov(k,k);               // and the covariance matrix
     
-	// the actual fit requires working memory we allocate and free
-	gsl_multifit_linear_workspace *work = gsl_multifit_linear_alloc (n, k);
-	gsl_multifit_linear (X, y, coef, cov, &chisq, work);
-	gsl_multifit_linear_free (work);
+    // the actual fit requires working memory we allocate and free
+    gsl_multifit_linear_workspace *work = gsl_multifit_linear_alloc (n, k);
+    gsl_multifit_linear (X, y, coef, cov, &chisq, work);
+    gsl_multifit_linear_free (work);
 
-	// assign diagonal to a vector, then take square roots to get std.error
-	Rcpp::NumericVector std_err;
-	std_err = gsl_matrix_diagonal(cov); // need two step decl. and assignment
-	std_err = sqrt(std_err);    		// sqrt() is an Rcpp sugar function
+    // assign diagonal to a vector, then take square roots to get std.error
+    Rcpp::NumericVector std_err;
+    std_err = gsl_matrix_diagonal(cov); 	// need two step decl. and assignment
+    std_err = Rcpp::sqrt(std_err);         	// sqrt() is an Rcpp sugar function
 
-	Rcpp::List res = Rcpp::List::create(Rcpp::Named("coefficients") = coef, 
-										Rcpp::Named("stderr")       = std_err,
-										Rcpp::Named("df.residual")  = n - k);
-
-	// free all the GSL vectors and matrices -- as these are really C data structures
-	// we cannot take advantage of automatic memory management
-	coef.free() ;
-	cov.free();
-	y.free();
-	X.free();
-
-	return res;    // return the result list to R 
+    return Rcpp::List::create(Rcpp::Named("coefficients") = coef, 
+                              Rcpp::Named("stderr")       = std_err,
+                              Rcpp::Named("df.residual")  = n - k);
     
 }
 

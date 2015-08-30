@@ -14,8 +14,7 @@ prettyDate <- format(Sys.Date(), "%B %e, %Y")
 ### code chunk number 7: inlineex1
 ###################################################
 fx <- Rcpp::cppFunction("int sum_gsl_vector_int(RcppGSL::vector<int> vec) {
-    int res = std::accumulate( vec.begin(), vec.end(), 0) ;
-    vec.free();  // we need to free vec after use
+    int res = std::accumulate( vec.begin(), vec.end(), 0);
     return res;
 }", depends="RcppGSL")
 
@@ -32,13 +31,11 @@ sum_gsl_vector_int(1:10)
 Rcpp::cppFunction("double gsl_vector_sum_2(Rcpp::List data) {
     RcppGSL::vector<double> x = data[\"x\"];
     RcppGSL::vector<int> y = data[\"y\"];
-    double res = 0.0 ;
+    double res = 0.0;
     for (size_t i=0; i< x->size; i++) {
-        res += x[i] * y[i] ;
+        res += x[i] * y[i];
     }
-    x.free() ;
-    y.free() ;
-    return res ;
+    return res;
 }", depends= "RcppGSL")
 
 
@@ -50,7 +47,7 @@ gsl_vector_sum_2(data)
 
 
 ###################################################
-### code chunk number 23: RcppGSL-intro.Rnw:730-757
+### code chunk number 23: RcppGSL-intro.Rnw:821-847
 ###################################################
 require(inline)
 
@@ -60,7 +57,7 @@ inctxt='
 '
 
 bodytxt='
-  RcppGSL::matrix<double> M = sM;     // create gsl data structures from SEXP
+  RcppGSL::matrix<double> M = sM;     // create data structures from SEXP
   int k = M.ncol();
   Rcpp::NumericVector n(k);           // to store results
 
@@ -68,7 +65,6 @@ bodytxt='
     RcppGSL::vector_view<double> colview = gsl_matrix_column (M, j);
     n[j] = gsl_blas_dnrm2(colview);
   }
-  M.free() ;
   return n;                           // return vector
 '
 
@@ -82,13 +78,13 @@ foo(M)
 
 
 ###################################################
-### code chunk number 24: RcppGSL-intro.Rnw:763-764 (eval = FALSE)
+### code chunk number 24: RcppGSL-intro.Rnw:853-854 (eval = FALSE)
 ###################################################
 ## package.skeleton("mypackage", foo)
 
 
 ###################################################
-### code chunk number 26: RcppGSL-intro.Rnw:821-822 (eval = FALSE)
+### code chunk number 26: RcppGSL-intro.Rnw:909-910 (eval = FALSE)
 ###################################################
 ## sourceCpp("gslNorm.cpp")
 

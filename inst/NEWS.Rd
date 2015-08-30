@@ -2,11 +2,31 @@
 \title{News for Package \pkg{RcppGSL}}
 \newcommand{\cpkg}{\href{http://CRAN.R-project.org/package=#1}{\pkg{#1}}}
 
+\section{Changes in version 0.3.0 (2015-08-30)}{
+  \itemize{
+    \item The RcppGSL matrix and vector class now keep track of object
+      allocation and can therefore automatically free allocated object in
+      the destructor. Explicit \code{x.free()} use is still supported.
+    \item The matrix and vector classes now support const reference
+      semantics in the interfaces (thanks to PR #7 by Dan Dillon)
+    \item The matrix_view and vector_view classes are reorganized to
+      better support const arguments (thanks to PR #8 and #9 by Dan Dillon)
+    \item Shorthand forms such as \code{Rcpp::Matrix} have been added for
+      \code{double} and \code{int} vectors and matrices including views.
+    \item Examples such as \code{fastLm} can now be written in a much
+      cleaner and shorter way as GSL objects can appear in the function
+      signature and without requiring explicit \code{.free()} calls at the
+      end.
+    \item The included examples, as well as the introductory vignette,
+      have been updated accordingly. 
+  }
+}
+
 \section{Changes in version 0.2.5 (2015-07-05)}{
   \itemize{
     \item The \code{colnorm} function in the included example package
     was rewritten to use Rcpp Attributes, the example package was
-    updated and the version number increased to 0.0.3.
+    updated and its version number increased to 0.0.3.
     \item The unit tests also use the updated version of the example
     package.
     \item The package, and the included example package, were updated

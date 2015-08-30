@@ -1,8 +1,8 @@
-// -*- mode: C++; c-indent-level: 4; c-basic-offset: 4; tab-width: 4 -*-
+// -*- mode: C++; c-indent-level: 4; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 //
-// RcppGSL.h: Rcpp/GSL glue
+// RcppGSL_vector_view.h: Vector view class for Seamless R and GSL Integration
 //
-// Copyright (C)  2010 Romain Francois and Dirk Eddelbuettel
+// Copyright (C)  2010 - 2015  Romain Francois and Dirk Eddelbuettel
 //
 // This file is part of RcppGSL.
 //
@@ -27,39 +27,39 @@
 
 namespace Rcpp{
 
-#define RCPPGSL_VIEW(SUFFIX)                                         \
-template <> SEXP wrap( const gsl_vector##SUFFIX##_view& x){          \
-	return wrap(x.vector) ;                                          \
-}                                                                    \
-template <> SEXP wrap( const gsl_vector##SUFFIX##_const_view& x ){   \
-   return wrap(x.vector) ;                                           \
-}
+    #define RCPPGSL_VIEW(SUFFIX)                                      \
+    template <> SEXP wrap(const gsl_vector##SUFFIX##_view& x) {       \
+        return wrap(x.vector);                                        \
+    }                                                                 \
+    template <> SEXP wrap(const gsl_vector##SUFFIX##_const_view& x) { \
+        return wrap(x.vector);                                        \
+    }
 
-RCPPGSL_VIEW(_int)
-RCPPGSL_VIEW(_float)
-RCPPGSL_VIEW(_long)
-RCPPGSL_VIEW(_char)
-RCPPGSL_VIEW(_complex)
-RCPPGSL_VIEW(_complex_float)
-RCPPGSL_VIEW(_complex_long_double)
-RCPPGSL_VIEW(_long_double)
-RCPPGSL_VIEW(_short)
-RCPPGSL_VIEW(_uchar)
-RCPPGSL_VIEW(_uint)
-RCPPGSL_VIEW(_ushort)
-RCPPGSL_VIEW(_ulong)
-#undef RCPPGSL_VIEW
+    RCPPGSL_VIEW(_int)
+    RCPPGSL_VIEW(_float)
+    RCPPGSL_VIEW(_long)
+    RCPPGSL_VIEW(_char)
+    RCPPGSL_VIEW(_complex)
+    RCPPGSL_VIEW(_complex_float)
+    RCPPGSL_VIEW(_complex_long_double)
+    RCPPGSL_VIEW(_long_double)
+    RCPPGSL_VIEW(_short)
+    RCPPGSL_VIEW(_uchar)
+    RCPPGSL_VIEW(_uint)
+    RCPPGSL_VIEW(_ushort)
+    RCPPGSL_VIEW(_ulong)
+    #undef RCPPGSL_VIEW
 
-template <> SEXP wrap( const gsl_vector_view& x){       
-	return wrap(x.vector) ;                                       
-}                                                                 
-template <> SEXP wrap( const gsl_vector_const_view& x ){
-   return wrap(x.vector) ;                                        
-}
+    template <> SEXP wrap(const gsl_vector_view& x){       
+        return wrap(x.vector) ;                                       
+    }                                                                 
+    template <> SEXP wrap(const gsl_vector_const_view& x ){
+        return wrap(x.vector) ;                                        
+    }
 
-template <typename T> SEXP wrap( const ::RcppGSL::vector_view<T>& x){
-	return wrap( x.view.vector ) ;
-}
+    template <typename T> SEXP wrap(const ::RcppGSL::vector_view<T>& x){
+        return wrap( x.view.vector ) ;
+    }
 
 } 
 
