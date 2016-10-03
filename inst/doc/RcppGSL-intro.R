@@ -47,7 +47,7 @@ gsl_vector_sum_2(data)
 
 
 ###################################################
-### code chunk number 23: RcppGSL-intro.Rnw:821-847
+### code chunk number 23: RcppGSL-intro.Rnw:819-845
 ###################################################
 require(inline)
 
@@ -78,13 +78,13 @@ foo(M)
 
 
 ###################################################
-### code chunk number 24: RcppGSL-intro.Rnw:853-854 (eval = FALSE)
+### code chunk number 24: RcppGSL-intro.Rnw:851-852 (eval = FALSE)
 ###################################################
 ## package.skeleton("mypackage", foo)
 
 
 ###################################################
-### code chunk number 26: RcppGSL-intro.Rnw:909-910 (eval = FALSE)
+### code chunk number 26: RcppGSL-intro.Rnw:907-908 (eval = FALSE)
 ###################################################
 ## sourceCpp("gslNorm.cpp")
 

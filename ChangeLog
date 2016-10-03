@@ -1,3 +1,20 @@
+2016-10-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* tests/doRUnit.R: Rewritten in simpler form following lead of some
+	other packages using the RUnit testing frameworks
+
+	* R/unit.test.R: Remove unused and unexported function
+	* inst/unitTests/runTests.R: Ditto
+
+	* vignettes/RcppGSL-intro.Rnw: Restore 'boxed' display of code
+
+	* .travis.yml: Switch to using run.sh for Travis CI
+
+2016-05-19  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/RcppGSL-unitTests.Rnw: Do not write unit test results to
+	/tmp per request from CRAN to not write outside test directories
+
 2015-08-30  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.3.0
