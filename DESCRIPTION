@@ -1,8 +1,8 @@
 Package: RcppGSL
 Type: Package
 Title: 'Rcpp' Integration for 'GNU GSL' Vectors and Matrices
-Version: 0.3.2
-Date: 2017-03-04
+Version: 0.3.3
+Date: 2017-09-24
 Author: Dirk Eddelbuettel and Romain Francois
 Maintainer: Dirk Eddelbuettel <edd@debian.org>
 Description: 'Rcpp' integration for 'GNU GSL' vectors and matrices
@@ -20,10 +20,10 @@ License: GPL (>= 2)
 LazyLoad: yes
 LinkingTo: Rcpp
 Imports: Rcpp (>= 0.11.0), stats
-Suggests: RUnit, inline, highlight
+Suggests: RUnit, inline, knitr, rmarkdown, pinp
 SystemRequirements: GNU GSL
-VignetteBuilder: highlight
+VignetteBuilder: knitr
 NeedsCompilation: yes
-Packaged: 2017-03-04 12:15:08.297177 UTC; edd
+Packaged: 2017-09-24 14:23:03 UTC; edd
 Repository: CRAN
-Date/Publication: 2017-03-04 17:12:23
+Date/Publication: 2017-09-24 14:47:06 UTC
