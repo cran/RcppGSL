@@ -1,3 +1,36 @@
+2018-05-06  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.3.4
+
+2018-05-05  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/RcppGSL_matrix.h: Remove dynamic exception
+	specifications which are deprecated in C++11
+        * inst/include/RcppGSL_types.h: Idem
+	* vignettes/RcppGSL-intro.Rmd: Idem in one example
+
+	* src/Makevars.in: Undo CXX98 setting which is no longer needed
+
+	* inst/unitTests/cpp/gsl.cpp: Add explicit local sqrt() to be used
+	with std::transform to make the Solaris compiler happier
+
+2018-01-21  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/Makevars.in (PKG_LIBS): Set 'CXX_STD = CXX98' to avoid g++
+	whining about dynamic exception specification which C++11 dislikes
+	[ reverted later, see 2018-05-05 entry ]
+
+2017-12-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): New minor version
+
+2017-12-23  Jeroen Ooms  <jeroenooms@gmail.com>
+
+	* src/Makevars.win: Support native Windows builds
+	* tools/winlibs.R: Fetch Windows files if needed
+	* .Rbuildignore: Ignore top-level windows/ directory
+	* .gitignore: Idem
+
 2017-09-24  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.3.3

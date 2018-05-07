@@ -53,7 +53,8 @@ numbersections: true
 secnumdepth: 5
 
 # Optional: Bibliography 
-bibliography: Rcpp
+## Commented-out here as we include the references directly below
+## bibliography: Rcpp
 
 # Customize footer, eg by referencing the vignette
 footer_contents: "RcppGSL Vignette"
@@ -711,7 +712,7 @@ The \texttt{RcppGSL::matrix} template exposes three constructors.
 
 ```cpp
 // convert an R matrix to a GSL matrix
-matrix(SEXP x) throw(::Rcpp::not_compatible)
+matrix(SEXP x) 
 
 // encapsulate a GSL matrix pointer
 matrix(gsl_matrix* x)

@@ -3,6 +3,15 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/rcppgsl/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/rcppgsl/issues/#1}{##1}}
 
+\section{Changes in version 0.3.4 (2018-05-06)}{
+  \itemize{
+    \item Windows builds were updated (Jeroen Ooms in \ghpr{16}).
+    \item Remove dynamic exception specifications which are deprecated
+    with C++11 or later (Dirk in \ghpr{17}).
+    \item Accomodate Solaris by being more explicit about \code{sqrt}.
+  }
+}
+
 \section{Changes in version 0.3.3 (2017-09-24)}{
   \itemize{
     \item We also check for \code{gsl-config} at package load.
