@@ -1,3 +1,41 @@
+2019-10-20  Dirk Eddelbuettel  <edd@debian.org>
+
+        * DESCRIPTION (Version, Date): New release 0.3.7
+
+        * configure.ac: Mark as 0.3.7
+        * configure: Rebuilt
+
+	* inst/include/RcppGSL_types.h: Revert back from nullptr to NULL to
+	not impose C++11 compilation on client packages
+
+	* vignettes/rmd/RcppGSL-introduction.Rmd: Updated bibluigraphy handling
+	* vignettes/rmd/Rcpp.bib: Copied in from Rcpp package
+	* vignettes/rmd/Makefile: Added 
+
+2019-10-19  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Date, Version): Roll minor version
+
+	* DESCRIPTION(Suggests): Switch from RUnit to tinytest
+	* tests/tinytest.R: Renamed and converted from doRUnit.R
+	* inst/tinytest/: Renamed and converted from unitTests/
+	* .travis.yml (install): Install r-cran-tinytest not of r-cran-runit
+
+2019-10-15  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/RcppGSL-intro.Rnw: Wrapper around pre-made vignette
+	* vignettes/RcppGSL-intro.Rmd: Moved to rmd/RcppGSL-introduction.pdf
+	and included pre-made in simpler Sweave vignette
+	* vignettes/RcppGSL-unitTests.Rnw: Removed
+	
+2019-10-14  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/RcppGSL_types.h: Correct logic, actually call free()
+
+2018-09-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* .travis.yml: Switch Travis CI to R 3.5 repo
+
 2018-06-10  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.3.6
