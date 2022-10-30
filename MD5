@@ -1,5 +1,5 @@
-86a44b511837cc46d1a4ce2318ce7f84 *ChangeLog
-6da6409e6745e7d16df15cc2db3c9a0e *DESCRIPTION
+c5ff480b550ca9ae590f0000282d5d3c *ChangeLog
+214aabc763d2460c1162e028118d87d1 *DESCRIPTION
 ab224aaaef366cc78e9ed7430feeea9f *NAMESPACE
 4ae937de8397e60712c56229703c16f5 *R/RcppExports.R
 f7d8b7cbd39e593ba8ddf03a43279dc9 *R/fastLm.R
@@ -7,14 +7,14 @@ f7d8b7cbd39e593ba8ddf03a43279dc9 *R/fastLm.R
 e3e6b6943ffd2cc94aca47745e502d33 *R/inline.R
 4dd190cc7a0b4c8049cb7ce542ac0101 *README.md
 3883e612bd76f4fe2df73a4bcaf28164 *TODO
-db84bd8a5f901b2fd48fe772eaca2521 *build/partial.rdb
-c4f5eb9ef3530d4b55e809f027d18fb0 *build/vignette.rds
+8b2b76145c10ec1df0624c9494f4ef07 *build/partial.rdb
+9847ae232090fa7058637584e51c7d52 *build/vignette.rds
 d02d72151c8a9e3cffa39e0115020417 *cleanup
-8f55f4086a4868a9a771f07182e1b18c *configure
-50942f2eb79e2cee8fbb061613a07072 *configure.ac
-50be859f9a5a08916784e18ec201a090 *inst/NEWS.Rd
+bd17f6eb885a1d09a8f52cbd2942eaf4 *configure
+0143818a42af565669576237a74c57cb *configure.ac
+e50d55fd976ae44278c731604e50d15e *inst/NEWS.Rd
 4b0054248b3d60a0f04f107e534b901a *inst/doc/RcppGSL-intro.Rnw
-565cbc3e30354523e82bcf0cd4cf88c6 *inst/doc/RcppGSL-intro.pdf
+85f3572e3462bf67a4391aa6235a7777 *inst/doc/RcppGSL-intro.pdf
 acd73645dbdb9731139253720713e1f7 *inst/examples/RcppGSLExample/DESCRIPTION
 ca4d3febd8107be64527dbb80674d7f0 *inst/examples/RcppGSLExample/NAMESPACE
 07b32ab09f8211f783470b43adbd57a4 *inst/examples/RcppGSLExample/R/RcppExports.R
@@ -53,7 +53,7 @@ aade1248e53b658f779c5c68a9677cb5 *src/Makevars.ucrt
 1fa17e37e49e82b5e916c39be39f65b9 *src/Makevars.win
 fcecc3b7db20ec2f2bdb63cf3feac0e4 *src/RcppExports.cpp
 ec227745a908b2cee282119745407088 *src/fastLm.cpp
-0ed3763b4c2fcc1dc6c12209ae757908 *src/init.c
+ccc65ba8db955bd50d306032f541da89 *src/init.c
 9cfa37e70e40833dd2607a100c7d2e33 *src/setErrorHandler.cpp
 73e9b83fe44e0c79305a5c7906c56234 *tests/tinytest.R
 876da2841839c09471a50cf76a404767 *tools/winlibs.R
